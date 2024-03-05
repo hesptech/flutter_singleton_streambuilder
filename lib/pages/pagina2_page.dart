@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '/bloc/user/user_bloc.dart';
 import '/models/user.dart';
+//import '/bloc/utente/utente_cubit.dart';
+//import '/models/utente.dart';
 
 
 
@@ -13,7 +15,8 @@ class Pagina2Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final userBloc = BlocProvider.of<UserBloc>(context, listen: false );
+  final userBloc = BlocProvider.of<UserBloc>(context, listen: false );
+  //final utenteCubit = context.read<UtenteCubit>();
 
     return Scaffold(
       appBar: AppBar(
@@ -27,23 +30,29 @@ class Pagina2Page extends StatelessWidget {
             MaterialButton(
               color: Colors.blue,
               onPressed: () {
-
+                
                 final newUser = User(
-                  nombre: 'Fernando',
-                  edad: 36,
-                  profesiones: [ 'FullStack Developer']
+                //final newUser = Utente(
+                  nombre: 'Fernando Herrera',
+                  edad: 34,
+                  profesiones: [
+                    'FullStack Developer',
+                    'Videojugador Veterano'
+                  ]
                 );
 
                 // BlocProvider.of<UserBloc>(context, listen: false ).add( ActivateUser(newUser) );
                 userBloc.add( ActivateUser(newUser) );
+                //utenteCubit.seleccionarUtente(newUser);
               },
-              child: const Text('Establecer Usuario', style: TextStyle( color: Colors.white ) )
+              child: const Text('Establecer Utente', style: TextStyle( color: Colors.white ) )
             ),
 
             MaterialButton(
               color: Colors.blue,
               onPressed: () {
                 userBloc.add( ChangeUserAge(25) );
+                //utenteCubit.cambiarEdad(30);
               },
               child: const Text('Cambiar Edad', style: TextStyle( color: Colors.white ) )
             ),
@@ -52,6 +61,7 @@ class Pagina2Page extends StatelessWidget {
               color: Colors.blue,
               onPressed: () {
                 userBloc.add( AddProfession('Nueva Profesión') );
+                //utenteCubit.agregarProfesion();
               },
               child: const Text('Añadir Profesion', style: TextStyle( color: Colors.white ) )
             ),

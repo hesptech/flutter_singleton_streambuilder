@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+//import '/bloc/utente/utente_cubit.dart';
 import '/bloc/user/user_bloc.dart';
 
 import 'package:flutter_singleton_streambuilder/pages/pagina1_page.dart';
@@ -17,6 +18,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        //BlocProvider(create: ( _ ) => UtenteCubit() )
         BlocProvider(create: ( _ ) => UserBloc() )
       ],
       child: MaterialApp(
